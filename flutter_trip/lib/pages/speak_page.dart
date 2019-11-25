@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/pages/search_page.dart';
 import 'package:flutter_trip/plugin/asr_manager.dart';
+import 'package:flutter_trip/util/navigator_util.dart';
 
 class SpeakPage extends StatefulWidget {
   @override
@@ -155,11 +156,7 @@ class _SpeakPageState extends State<SpeakPage> with SingleTickerProviderStateMix
           speakResult = text;
         });
         Navigator.pop(context);
-        Navigator.push(context,
-            MaterialPageRoute(
-                builder: (context) => SearchPage(keyword: speakResult)
-            )
-        );
+        NavigatorUtil.push(context, SearchPage(keyword: speakResult));
       }
     }).catchError((e) {
       print('--------' + e.toString());

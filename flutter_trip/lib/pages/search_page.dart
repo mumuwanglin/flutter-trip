@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/dao/search_dao.dart';
 import 'package:flutter_trip/pages/speak_page.dart';
+import 'package:flutter_trip/util/navigator_util.dart';
 import 'package:flutter_trip/widget/search_bar.dart';
 import 'package:flutter_trip/model/search_model.dart';
 import 'package:flutter_trip/widget/webview.dart';
@@ -106,9 +107,7 @@ class _SearchPageState extends State<SearchPage> {
                 Navigator.pop(context);
               },
               speakClick: (){
-                Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => SpeakPage()
-                ));
+                NavigatorUtil.push(context, SpeakPage());
               },
               onChanged: _onTextChange,
             ),
@@ -196,12 +195,10 @@ class _SearchPageState extends State<SearchPage> {
     SearchItem item = searchModel.data[position];
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => WebView(
-              url: item.url,
-              title: "详情",
-            ))
-        );
+        NavigatorUtil.push(context, WebView(
+          url: item.url,
+          title: "详情",
+        ));
       },
       child: Container(
         padding: EdgeInsets.all(10),

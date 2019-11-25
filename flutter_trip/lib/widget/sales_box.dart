@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/model/common_model.dart';
 import 'package:flutter_trip/model/sales_box_model.dart';
+import 'package:flutter_trip/util/navigator_util.dart';
 import 'package:flutter_trip/widget/webview.dart';
 
 class SalesBox extends StatelessWidget {
@@ -49,9 +50,7 @@ class SalesBox extends StatelessWidget {
                 ),
                 child: GestureDetector(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => WebView(url: salesBox.moreUrl,title: "更多活动",)
-                    ));
+                    NavigatorUtil.push(context, WebView(url: salesBox.moreUrl,title: "更多活动",));
                   },
                   child: Text('获取更多福利 >', style: TextStyle(color: Colors.white, fontSize: 12),),
                 ),
@@ -89,12 +88,7 @@ class SalesBox extends StatelessWidget {
     BorderSide borderSide = BorderSide(width: 0.8, color: Color(0xfff2f2f2));
     return GestureDetector(
       onTap: (){
-        print("item");
-        Navigator.push(context,
-            MaterialPageRoute(
-                builder: (context) => WebView(url: model.url, statusBarColor: model.statusBarColor, hideAppBar: model.hideAppBar,)
-            )
-        );
+        NavigatorUtil.push(context, WebView(url: model.url, statusBarColor: model.statusBarColor, hideAppBar: model.hideAppBar,));
       },
       child: Container(
         decoration: BoxDecoration(
